@@ -2,19 +2,18 @@
     <x-slot:heading>
         Jobs listings
     </x-slot:heading>
-    <h1>Hello from Jobs Page</h1>
 
-    <ul>
+    <div class="space-y-4">
         @foreach ($jobs as $job)
-        <li>
-            <a href="/jobs/{{ $job['id'] }}">
-                <strong>{{ $job['title'] }}:</strong> Paying {{ $job['salary'] }} per year, working @if ($job['location'] == 'Remote')
-                Remote
-            @else
-            in {{ $job['location'] }}
-            @endif
+            <a href="/jobs/{{ $job['id'] }}" class="block px-4 py-6 border border-gray-200 rounded-lg">
+                <div class="text-blue-500 font-bold">{{ $job->employer->name }}</div>
+                <strong>{{ $job['title'] }}:</strong> Paying {{ $job['salary'] }} per year, working
+                 @if ($job['location'] == 'Remote')
+                    Remote
+                @else
+                    in {{ $job['location'] }}
+                @endif
             </a>
-        </li>
         @endforeach
-    </ul>
+    </div>
 </x-layout>

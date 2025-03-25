@@ -23,10 +23,10 @@
 
 
 <body
-    class="h-full max-w-screen-2xl bg-white text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+    class="min-h-full max-w-screen-2xl bg-white text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
     <div class="min-h-full w-full bg-gray-100">
         <nav class="bg-gray-800">
-            <div class=" mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
                         <div class="shrink-0">
