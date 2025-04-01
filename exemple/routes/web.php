@@ -88,9 +88,7 @@ Route::patch('/jobs/{id}', function ($id) {
 
 // Route pour supprimer un job
 Route::delete('/jobs/{id}', function ($id) {
-
-    $job = Job::findOrFail($id);
-    $job->delete();
+    Job::findOrFail($id)->delete();
 
     return redirect('/jobs');
 });
