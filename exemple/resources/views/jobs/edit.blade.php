@@ -3,9 +3,10 @@
         Edit Job : {{ $job['title'] }}
     </x-slot:heading>
 
-    <form method="POST" action="/jobs">
+    <form method="POST" action="/jobs/{{ $job->id }}">
         @csrf
-
+        @method('PATCH')
+        
         <div x-data="{ isRemote: {{ $job->location === 'Remote' ? 'true' : 'false' }} }" class="space-y-12">
             <div class="border-b border-gray-900/10 pb-12">
                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -41,7 +42,7 @@
                                        name="remote" 
                                        id="remote"
                                        x-model="isRemote"
-
+                                       value="1"
                                        {{ $job->location === 'Remote' ? 'checked' : '' }}
                                        class="rounded-md border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                 <span class="ml-2">Remote Position</span>

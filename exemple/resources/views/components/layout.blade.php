@@ -23,7 +23,7 @@
 
 
 <body
-    class="min-h-screen max-w-screen-2xl bg-white text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center  flex-col">
+    class="mx-auto min-h-screen max-w-screen-2xl bg-white text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center  flex-col">
     <div class="min-h-screen w-full bg-gray-100">
         <nav class="bg-gray-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

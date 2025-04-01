@@ -21,6 +21,13 @@ Route::get('/jobs/create', function () {
     return view('jobs.create');
 });
 
+// Route pour afficher un job spécifique
+Route::get('/jobs/{id}', function ($id) {
+    $job = Job::find($id);
+
+    return view('jobs.show', ['job' => $job]);
+});
+
 // Route pour enregistrer un nouveau job
 Route::post('/jobs', function () {
     // Récupérer la valeur de remote avec une valeur par défaut de false
@@ -31,10 +38,6 @@ Route::post('/jobs', function () {
         'salary' => 'required',
         'location' => $isRemote ? 'nullable' : 'required',
         'remote' => 'boolean'
-    ], [
-        'title.required' => 'The title is required',
-        'salary.required' => 'The salary is required',
-        'location.required_if' => 'The location is required if the job is not remote'
     ]);
 
     Job::create([
@@ -46,13 +49,6 @@ Route::post('/jobs', function () {
     ]);
 
     return redirect('/jobs');
-});
-
-
-// Route pour afficher un job spécifique
-Route::get('/jobs/{id}', function ($id) {
-    $job = Job::find($id);
-    return view('jobs.show', ['job' => $job]);
 });
 
 // Route pour afficher la page de contact
@@ -69,21 +65,18 @@ Route::get('/jobs/{id}/edit', function ($id) {
 // Route pour editer un job
 Route::patch('/jobs/{id}', function ($id) {
     $isRemote = request()->boolean('remote', false);
-    
     request()->validate([
         'title' => ['required', 'min:3'],
         'salary' => 'required',
         'location' => $isRemote ? 'nullable' : 'required',
-        'remote' => 'boolean'
     ], [
         'title.required' => 'The title is required',
         'salary.required' => 'The salary is required',
-        'location.required_if' => 'The location is required if the job is not remote'
+        'location.required' => 'The location is required for a non-remote job'
     ]);
 
-    // authorize the user (hold)
-
     $job = Job::findOrFail($id);
+    
     $job->update([
         'title' => request('title'),
         'salary' => request('salary'),
